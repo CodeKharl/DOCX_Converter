@@ -31,7 +31,7 @@ pip install python-docx
 ### Basic Usage
 
 ```bash
-python main.py file1.py file2.c file3.java
+python docx_file_converter file1.py file2.c file3.java
 ```
 
 This will generate a DOCX file using the default output name and font settings.
@@ -41,7 +41,7 @@ This will generate a DOCX file using the default output name and font settings.
 ### Specify Output File
 
 ```bash
-python main.py file1.py file2.py -o output.docx
+python docx_file_converter file1.py file2.py -o output.docx
 ```
 
 ---
@@ -49,7 +49,7 @@ python main.py file1.py file2.py -o output.docx
 ### Customize Font Name and Size
 
 ```bash
-python main.py file1.py \
+python docx_file_converter file1.py \
   --fontname "Courier New" \
   --fontsize 11
 ```
@@ -70,7 +70,7 @@ python main.py file1.py \
 ## 🛠️ Example
 
 ```bash
-python main.py src/main.py src/utils.py -o code.docx --fontname Consolas --fontsize 10
+python docx_file_converter src/main.py src/utils.py -o code.docx --fontname Consolas --fontsize 10
 ```
 
 ---
@@ -79,8 +79,7 @@ python main.py src/main.py src/utils.py -o code.docx --fontname Consolas --fonts
 
 ```text
 .
-├── main.py           # CLI entry point
-├── converter.py      # Core conversion logic
+├── docx_file_converter          # CLI entry point
 └── README.md         # Project documentation
 ```
 
@@ -97,7 +96,7 @@ python main.py src/main.py src/utils.py -o code.docx --fontname Consolas --fonts
 
 ## 📜 License
 
-This project is open-source and available under the **MIT License**.
+This project is open-source.
 
 ---
 
@@ -107,5 +106,3 @@ Developed by **Kharl Denzell Bugarin**
 Focused on clean tooling, automation, and practical developer utilities.
 
 ---
-
-If you want enhancements like syntax highlighting, line numbers, or per-file headers, feel free to extend the converter module.
