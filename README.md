@@ -80,6 +80,7 @@ This will generate a DOCX file using the default output name and font settings.
 ```text
 .
 ├── docx_file_converter          # CLI entry point
+├── scripts
 └── README.md         # Project documentation
 ```
 
