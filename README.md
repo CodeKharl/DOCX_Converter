@@ -28,10 +28,10 @@ pip install python-docx
 
 ## 🚀 Usage
 
-### Basic Usage
+### Basic Usage (script)
 
 ```bash
-python docx_file_converter file1.py file2.c file3.java
+./scripts/convert file1.py file2.c file3.java
 ```
 
 This will generate a DOCX file using the default output name and font settings.
@@ -41,7 +41,7 @@ This will generate a DOCX file using the default output name and font settings.
 ### Specify Output File
 
 ```bash
-python docx_file_converter file1.py file2.py -o output.docx
+./scripts/convert file1.py file2.py -o output.docx
 ```
 
 ---
@@ -49,7 +49,7 @@ python docx_file_converter file1.py file2.py -o output.docx
 ### Customize Font Name and Size
 
 ```bash
-python docx_file_converter file1.py \
+./scripts/convert file1.py \
   --fontname "Courier New" \
   --fontsize 11
 ```
@@ -70,7 +70,7 @@ python docx_file_converter file1.py \
 ## 🛠️ Example
 
 ```bash
-python docx_file_converter src/main.py src/utils.py -o code.docx --fontname Consolas --fontsize 10
+./scripts/convert src/main.py src/utils.py -o code.docx --fontname Consolas --fontsize 10
 ```
 
 ---

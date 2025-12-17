@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source .venv/bin/activate
+cmd=$?
+
+if [[ $cmd == 0 ]]; then
+    python3 docx_file_converter "$@"
+fi
+
+deactivate
