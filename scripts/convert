@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-source .venv/bin/activate
-cmd=$?
-
-if [[ $cmd == 0 ]]; then
-    python3 docx_file_converter "$@"
+if ! source .venv/bin/activate; then
+    echo "Failed to activate venv"
+    exit 1
 fi
 
+python3 docx_file_converter "$@"
 deactivate
