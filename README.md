@@ -98,7 +98,7 @@ python3 docx_file_converter src/main.py src/utils.py -o code.docx --fontname Con
 ```text
 .
 ├── docx_file_converter          # CLI entry point
-├── scripts
+├── scripts           # Scripts
 └── README.md         # Project documentation
 ```
 
