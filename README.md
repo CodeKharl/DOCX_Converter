@@ -9,8 +9,10 @@ The tool supports custom **font name** and **font size**, making it flexible for
 ## ✨ Features
 
 * Convert **multiple input files** into a single DOCX document
+* Each input file is added under its own **heading** (the file name)
 * Customizable **font name** and **font size**
 * Sensible defaults for quick usage
+* Reads files as UTF-8 text
 * Clean and minimal CLI interface using `argparse`
 
 ---
@@ -18,9 +20,17 @@ The tool supports custom **font name** and **font size**, making it flexible for
 ## 📦 Requirements
 
 * Python 3.8+
-* Required dependencies (install via pip):
+* [python-docx](https://pypi.org/project/python-docx/)
+
+---
+
+## 🛠️ Installation
+
+It is recommended to use a virtual environment:
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install python-docx
 ```
 
@@ -38,7 +48,11 @@ pip install python-docx
 python3 docx_file_converter file1.py file2.c file3.java
 ```
 
-This will generate a DOCX file using the default output name and font settings.
+This will generate a DOCX file using the default output name and font settings
+(`output.docx`, `Times New Roman`, 12pt).
+
+> **Note:** The `./scripts/convert` wrapper activates the `.venv` virtual
+> environment, so the venv must exist before using it (see Installation).
 
 ---
 
@@ -72,12 +86,12 @@ python3 docx_file_converter file1.py \
 
 ## 🧾 Command-Line Arguments
 
-| Argument         | Description                                   |
-| ---------------- | --------------------------------------------- |
-| `inputs`         | One or more input files to convert (required) |
-| `-o`, `--output` | Output DOCX file name                         |
-| `--fontname`     | Font name used in the DOCX file               |
-| `--fontsize`     | Font size used in the DOCX file               |
+| Argument          | Description                          | Default          |
+| ----------------- | ------------------------------------ | ---------------- |
+| `inputs`          | One or more input files to convert (required) | —        |
+| `-o`, `--output`  | Output DOCX file name                | `output.docx`    |
+| `--fontname`      | Font name used in the DOCX file      | `Times New Roman`|
+| `--fontsize`      | Font size used in the DOCX file      | `12`             |
 
 ---
 
@@ -97,9 +111,14 @@ python3 docx_file_converter src/main.py src/utils.py -o code.docx --fontname Con
 
 ```text
 .
-├── docx_file_converter          # CLI entry point
-├── scripts           # Scripts
-└── README.md         # Project documentation
+├── docx_file_converter/   # Python package
+│   ├── __main__.py        # CLI entry point (argparse)
+│   └── converter.py       # DOCX conversion logic
+├── scripts/
+│   └── convert            # Bash wrapper (activates .venv)
+├── .gitignore
+├── LICENSE                # MIT License
+└── README.md              # Project documentation
 ```
 
 ---
@@ -107,15 +126,19 @@ python3 docx_file_converter src/main.py src/utils.py -o code.docx --fontname Con
 ## 🧠 How It Works
 
 1. The CLI parses arguments using `argparse`
-2. Input files are read sequentially
-3. Code content is passed to the converter
-4. The converter formats and writes everything into a DOCX file
+2. A new DOCX document is created
+3. For each input file:
+   - A heading is added using the file name
+   - The file content is read as UTF-8 text
+   - The content is added to the document with the given font name and size
+   - A blank paragraph separates the files
+4. The document is saved to the output path and a confirmation message is printed
 
 ---
 
 ## 📜 License
 
-This project is open-source.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
